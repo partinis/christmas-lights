@@ -18,7 +18,7 @@ class Cylon(Pattern):
     @classmethod
     def update(self, strip, state):
         LED_COUNT = len(strip)
-        SpeedDelay = .1
+        SpeedDelay = 0
         for i in range(0, 256):
             for j in range(0, LED_COUNT):
                 strip[j] = Wheel((j + i) & 255)
