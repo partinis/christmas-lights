@@ -16,16 +16,16 @@ from state import State
 from util import get_random_color
 
 patterns = [
-    'patterns.blink',
-    'patterns.solid',
-    'patterns.traditional',
-    'patterns.pulse',
+    # 'patterns.solid',
+    # 'patterns.blink',
     'patterns.scroll',
-    'patterns.scrollsmooth',
-    'patterns.random',
-    'patterns.larson',
     'patterns.wipeup',
     'patterns.wipedown',
+    'patterns.random',
+    'patterns.larson',
+    'patterns.scrollsmooth',
+    'patterns.pulse',
+    'patterns.traditional',
     'patterns.colorbeams',
     'patterns.colorbeams2',
     'patterns.cylon',
@@ -35,7 +35,6 @@ patterns = [
     'patterns.filldownrandom',
     'patterns.randomcolors',
     ]
-
 
 def update(strip, state, pattern_handlers):
     """
