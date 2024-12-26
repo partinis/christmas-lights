@@ -10,4 +10,9 @@ class NeoPixel(object):
 
         instance.setPixelColor = setPixelColor.__get__(instance)
 
+        def getPixelColor(self, n):
+            return instance[n]
+
+        instance.getPixelColor = getPixelColor.__get__(instance)
+
         return instance
