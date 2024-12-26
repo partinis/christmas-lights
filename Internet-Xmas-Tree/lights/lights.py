@@ -73,6 +73,7 @@ if __name__ == '__main__':
         state = State()
         try:
             while True:
+                print("Calling function "+str(state.pattern))
                 # update the state of the led strip
                 update(strip, state, pattern_handlers)
                 # write the data to the led strip
