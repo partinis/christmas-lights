@@ -9,3 +9,6 @@ def Color(red, green, blue, white = 0):
     and 255 is the highest intensity.
     """
     return (white << 24) | (red << 16)| (green << 8) | blue
+
+def SetAll(strip, color):
+    strip.fill(color)

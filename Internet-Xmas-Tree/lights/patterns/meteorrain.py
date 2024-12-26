@@ -1,7 +1,8 @@
 from .pattern import Pattern
 import time
 import random
-from .putil import Color
+from .putil import *
+
 
 class MeteorRain(Pattern):
 
@@ -22,7 +23,7 @@ class MeteorRain(Pattern):
         MeteorTrailDecay = 64
         MeteorRandomDecay = True
         SpeedDelay = .1
-        strip.fill((0, 0, 0))
+        SetAll(strip, Color(0, 0, 0))
         for i in range(0, LED_COUNT + LED_COUNT):
             # Fade brightness all LEDs one step
             for j in range(0, LED_COUNT):
@@ -31,28 +32,28 @@ class MeteorRain(Pattern):
             # Draw meteor
             for j in range(0, MeteorSize):
                 if (((i - j) < LED_COUNT) and ((i - j) >= 0)):
-                    strip[i - j] = (red, green, blue)
+                    strip.setPixelColor(i - j, Color(red, green, blue))
             strip.show()
             time.sleep(SpeedDelay)
 
 
 def FadeToBlack(strip, Position, FadeValue):
     OldColor = strip.getPixelColor(Position)
-    if isinstance(OldColor, list):
-        OldColor = (OldColor[0] << 16) | (OldColor[1] << 8) | OldColor[2]
+    # if isinstance(OldColor, list):
+    #     OldColor = (OldColor[0] << 16) | (OldColor[1] << 8) | OldColor[2]
     r = (OldColor & 0x00ff0000) >> 16
     g = (OldColor & 0x0000ff00) >> 8
     b = (OldColor & 0x000000ff)
     if (r <= 10):
-        r = 0
+        r = 0;
     else:
-        r = int(r - (r * FadeValue / 256))
+        r = r - (r * FadeValue / 256)
     if (g <= 10):
-        g = 0
+        g = 0;
     else:
-        g = int(g - (g * FadeValue / 256))
+        g = g - (g * FadeValue / 256)
     if (b <= 10):
-        b = 0
+        b = 0;
     else:
-        b = int(b - (b * FadeValue / 256))
+        b = b - (b * FadeValue / 256)
     strip.setPixelColor(Position, Color(r, g, b))
