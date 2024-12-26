@@ -72,7 +72,7 @@ if __name__ == '__main__':
     with neopixel.NeoPixel(board.D18, int(conf.count), bpp=3, auto_write=False, brightness=conf.brightness, pixel_order=neopixel.GRB) as strip:
         state = State()
         # state.pattern = sys.argv[1]
-        state.pattern = 3
+        state.pattern = sys.argv[1]
         state.color1 = (0, 255, 0)
         state.color2 = (0, 0, 255)
         state.len = 1
