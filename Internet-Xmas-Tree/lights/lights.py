@@ -30,6 +30,7 @@ patterns = [
     'patterns.colorbeams',
     'patterns.colorbeams2',
     'patterns.cylon',
+    'patterns.rainbow',
     ]
 
 
