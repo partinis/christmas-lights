@@ -28,6 +28,7 @@ patterns = [
     'patterns.wipeup',
     'patterns.wipedown',
     'patterns.colorbeams',
+    'patterns.colorbeams2',
     ]
 
 
