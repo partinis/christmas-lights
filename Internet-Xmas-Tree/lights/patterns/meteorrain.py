@@ -1,6 +1,7 @@
 from .pattern import Pattern
 import time
 import random
+from util import Color
 
 
 class MeteorRain(Pattern):
@@ -55,4 +56,4 @@ def FadeToBlack(strip, Position, FadeValue):
         b = 0
     else:
         b = int(b - (b * FadeValue / 256))
-    strip.setPixelColor(Position, (r, g, b))
+    strip.setPixelColor(Position, Color(r, g, b))
