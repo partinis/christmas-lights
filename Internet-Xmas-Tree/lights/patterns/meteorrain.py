@@ -1,8 +1,7 @@
 from .pattern import Pattern
 import time
 import random
-from putil import Color
-
+from .putil import Color
 
 class MeteorRain(Pattern):
 
