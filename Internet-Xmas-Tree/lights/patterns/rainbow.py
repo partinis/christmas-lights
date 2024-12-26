@@ -5,7 +5,6 @@
 from .pattern import Pattern
 import time
 import math
-import Color
 
 class Cylon(Pattern):
 
@@ -37,13 +36,9 @@ def wheel(pos):
         pos -= 170
         return Color(0, pos * 3, 255 - pos * 3)
 
-def Wheel(WheelPosition):
-    #Generate rainbow colors across 0-255 positions.
-    if WheelPosition < 85:
-        return (WheelPosition * 3, 255 - WheelPosition * 3, 0)
-    elif WheelPosition < 170:
-        WheelPosition -= 85
-        return (255 - WheelPosition * 3, 0, WheelPosition * 3)
-    else:
-        WheelPosition -= 170
-        return (0, WheelPosition * 3, 255 - WheelPosition * 3)
+def Color(red, green, blue, white = 0):
+    """Convert the provided red, green, blue color to a 24-bit color value.
+    Each color component should be a value 0-255 where 0 is the lowest intensity
+    and 255 is the highest intensity.
+    """
+    return (white << 24) | (red << 16)| (green << 8) | blue
