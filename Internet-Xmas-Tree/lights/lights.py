@@ -31,6 +31,7 @@ patterns = [
     'patterns.cylon',
     'patterns.rainbow',
     'patterns.meteorrain',
+    'patterns.newkitt',
     ]
 
 
