@@ -53,4 +53,4 @@ def FadeToBlack(strip, Position, FadeValue):
         b = 0
     else:
         b = int(b - (b * FadeValue / 256))
-    strip[Position] = (r, g, b)
+    strip.setPixelColor(Position, (r, g, b))
