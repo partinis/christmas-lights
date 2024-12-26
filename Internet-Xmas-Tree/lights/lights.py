@@ -31,6 +31,7 @@ patterns = [
     'patterns.colorbeams2',
     'patterns.cylon',
     'patterns.rainbow',
+    'patterns.meteorrain',
     ]
 
 

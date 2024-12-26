@@ -1,12 +1,7 @@
-"""
-"Cylon" pattern
-"""
-
 from .pattern import Pattern
 import time
-import math
 
-class Cylon(Pattern):
+class Rainbow(Pattern):
 
     def __init__(self):
         pass
