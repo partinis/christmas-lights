@@ -8,4 +8,6 @@ class NeoPixel(object):
         def setPixelColor(self, n, color):
             instance[n] = color
 
+        instance.setPixelColor = setPixelColor.__get__(instance)
+
         return instance
