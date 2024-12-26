@@ -50,8 +50,7 @@ def update(strip, state, pattern_handlers):
         pattern_handlers[0].update(strip, state)
 
 if __name__ == '__main__':
-    # first arg is the path (may be relative) to the config.ini
-    config_file = sys.argv[1]
+    config_file = "../configuration.ini"
     conf = Config(config_file)
     conf.load()
     
