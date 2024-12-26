@@ -12,7 +12,7 @@ class State(object):
     random1 = False
     random2 = False
     # the pattern id to use
-    pattern = 0
+    pattern = 1
     # depending on the pattern, typically is how many LEDs
     # wide the pattern is
     length = 5
