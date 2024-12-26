@@ -32,6 +32,7 @@ patterns = [
     'patterns.rainbow',
     'patterns.meteorrain',
     'patterns.newkitt',
+    'patterns.filldownrandom',
     ]
 
 
