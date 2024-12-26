@@ -73,8 +73,8 @@ if __name__ == '__main__':
         state = State()
         # state.pattern = sys.argv[1]
         state.pattern = 0
-        state.color1 = "000000"
-        state.color2 = "000000"
+        state.color1 = (0, 0, 0)
+        state.color2 = (0, 0, 0)
         state.len = 1
         state.delay = 10
         state.random1 = False
