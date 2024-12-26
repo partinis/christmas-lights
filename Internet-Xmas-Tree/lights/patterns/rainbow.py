@@ -22,8 +22,8 @@ class Cylon(Pattern):
         for i in range(0, 256):
             for j in range(0, LED_COUNT):
                 strip[j] = Wheel((j + i) & 255)
-        strip.show()
-        time.sleep(SpeedDelay)
+            strip.show()
+            time.sleep(SpeedDelay)
 
 def Wheel(WheelPosition):
     #Generate rainbow colors across 0-255 positions.
