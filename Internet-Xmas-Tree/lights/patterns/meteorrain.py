@@ -36,6 +36,8 @@ class MeteorRain(Pattern):
 
 def FadeToBlack(strip, Position, FadeValue):
     OldColor = strip[Position]
+    if isinstance(OldColor, list):
+        OldColor = (OldColor[0] << 16) | (OldColor[1] << 8) | OldColor[2]
     r = (OldColor & 0x00ff0000) >> 16
     g = (OldColor & 0x0000ff00) >> 8
     b = (OldColor & 0x000000ff)
