@@ -24,7 +24,7 @@ def highlight(strip, i, hue = 0.5):
         # strip[index] = (int(strip[index][0] * decay), int(strip[index][1] * decay), int(strip[index][2] * decay))
         strip[index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
 
-with neopixel.NeoPixel(board.D18, 300, bpp=3, auto_write=False, brightness=0.1) as strip:
+with neopixel.NeoPixel(board.D18, 300, bpp=3, auto_write=False, brightness=1.0) as strip:
     while True:
         for i in range(len(strip)):
             for y in range(0, len(strip), 50):
