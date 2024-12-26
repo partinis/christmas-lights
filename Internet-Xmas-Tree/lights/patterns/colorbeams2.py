@@ -44,5 +44,3 @@ class ColorBeams(Pattern):
                 ColorBeams.highlight(strip, i + y, (5 * y / len(strip)) % 1)
             if i % 1 == 0:
                 strip.show()
-        time.sleep(0.1)
-
