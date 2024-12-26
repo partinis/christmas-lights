@@ -9,7 +9,7 @@ import math
 class Cylon(Pattern):
 
     def __init__(self):
-        super(Pattern, self).__init__()
+        pass
 
     @classmethod
     def get_id(self):
