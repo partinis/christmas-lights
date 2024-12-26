@@ -53,7 +53,7 @@ if __name__ == '__main__':
     config_file = "../configuration.ini"
     conf = Config(config_file)
     conf.load()
-    
+
     state = State()
 
     # import all the patterns
@@ -71,7 +71,14 @@ if __name__ == '__main__':
     # initialize the led strip
     with neopixel.NeoPixel(board.D18, int(conf.count), bpp=3, auto_write=False, brightness=conf.brightness, pixel_order=neopixel.GRB) as strip:
         state = State()
-        state.pattern = sys.argv[1]
+        # state.pattern = sys.argv[1]
+        state.pattern = 0
+        state.color1 = "000000"
+        state.color2 = "000000"
+        state.len = 1
+        state.delay = 10
+        state.random1 = False
+        state.random2 = False
         try:
             while True:
                 print("Calling function "+str(state.pattern))
