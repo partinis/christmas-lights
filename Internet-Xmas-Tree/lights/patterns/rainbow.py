@@ -20,7 +20,7 @@ class Cylon(Pattern):
         LED_COUNT = len(strip)
         SpeedDelay = 0
         for j in range(256):
-            for i in range(strip.numPixels()):
+            for i in range(LED_COUNT):
                 strip.setPixelColor(i, wheel((i + j) & 255))
             strip.show()
             time.sleep(20 / 1000.0)
