@@ -4,8 +4,7 @@ Lights Client
 Responsible for setting the pattern of lights from the data file
 """
 
-import neopixel
-import board
+import neopixelmonkey
 import time
 import threading
 import sys
@@ -71,7 +70,7 @@ if __name__ == '__main__':
                 pattern_handlers[instance.get_id()] = instance
 
     # initialize the led strip
-    with neopixel.NeoPixel(board.D18, int(conf.count), bpp=3, auto_write=False, brightness=conf.brightness, pixel_order=neopixel.GRB) as strip:
+    with neopixelmonkey.NeoPixel(conf) as strip:
         state = State()
         # state.pattern = sys.argv[1]
         state.pattern = int(sys.argv[1])
