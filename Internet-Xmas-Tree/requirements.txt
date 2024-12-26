@@ -1,0 +1,7 @@
+rpi_ws281x
+adafruit-circuitpython-neopixel
+watchdog
+webcolors
+flask
+flask_cors
+pygame
