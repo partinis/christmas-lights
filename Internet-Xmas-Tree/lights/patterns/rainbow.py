@@ -1,10 +1,8 @@
 from .pattern import Pattern
 import time
+from .putil import *
 
 class Rainbow(Pattern):
-
-    def __init__(self):
-        pass
 
     @classmethod
     def get_id(self):
@@ -14,26 +12,19 @@ class Rainbow(Pattern):
     def update(self, strip, state):
         LED_COUNT = len(strip)
         SpeedDelay = 0
-        for j in range(256):
-            for i in range(LED_COUNT):
-                strip[i] = wheel((i + j) & 255)
+        for i in range(0, 256):
+            for j in range(0, LED_COUNT):
+                strip.setPixelColor(j, Wheel((j + i) & 255))
             strip.show()
-            time.sleep(20 / 1000.0)
+            time.sleep(SpeedDelay)
 
-def wheel(pos):
-    """Generate rainbow colors across 0-255 positions."""
-    if pos < 85:
-        return Color(pos * 3, 255 - pos * 3, 0)
-    elif pos < 170:
-        pos -= 85
-        return Color(255 - pos * 3, 0, pos * 3)
+def Wheel(WheelPosition):
+    #Generate rainbow colors across 0-255 positions.
+    if WheelPosition < 85:
+        return Color(WheelPosition * 3, 255 - WheelPosition * 3, 0)
+    elif WheelPosition < 170:
+        WheelPosition -= 85
+        return Color(255 - WheelPosition * 3, 0, WheelPosition * 3)
     else:
-        pos -= 170
-        return Color(0, pos * 3, 255 - pos * 3)
-
-def Color(red, green, blue, white = 0):
-    """Convert the provided red, green, blue color to a 24-bit color value.
-    Each color component should be a value 0-255 where 0 is the lowest intensity
-    and 255 is the highest intensity.
-    """
-    return (white << 24) | (red << 16) | (green << 8) | blue
+        WheelPosition -= 170
+        return Color(0, WheelPosition * 3, 255 - WheelPosition * 3)
