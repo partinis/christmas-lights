@@ -17,10 +17,6 @@ class Pulse(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        state.color1 = (255, 0, 0)
-        state.color2 = (0, 255, 0)
-        state.len = 1
-        state.delay = 5000
         amp = math.sin(time.time() * 1000.0 / float(state.delay))
         # set the color based on amplitude being negative or pos
         color = state.color1 if amp > 0 else state.color2
