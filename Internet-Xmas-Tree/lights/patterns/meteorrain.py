@@ -3,11 +3,7 @@ import time
 import random
 from .putil import *
 
-
 class MeteorRain(Pattern):
-
-    def __init__(self):
-        pass
 
     @classmethod
     def get_id(self):
