@@ -35,7 +35,7 @@ class MeteorRain(Pattern):
             time.sleep(SpeedDelay)
 
 def FadeToBlack(strip, Position, FadeValue):
-    OldColor = strip.getPixelColor(Position)
+    OldColor = strip[Position]
     r = (OldColor & 0x00ff0000) >> 16
     g = (OldColor & 0x0000ff00) >> 8
     b = (OldColor & 0x000000ff)
