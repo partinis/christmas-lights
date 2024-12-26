@@ -29,6 +29,7 @@ patterns = [
     'patterns.wipedown',
     'patterns.colorbeams',
     'patterns.colorbeams2',
+    'patterns.cylon',
     ]
 
 
@@ -52,9 +53,7 @@ def update(strip, state, pattern_handlers):
 
 if __name__ == '__main__':
     config_file = "../configuration.ini"
-    conf = Config(config_file)
-    conf.load()
-
+    conf = Config()
     state = State()
 
     # import all the patterns

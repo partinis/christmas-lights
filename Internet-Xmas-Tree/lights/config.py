@@ -9,22 +9,10 @@ import configparser
 
 class Config(object):
     patterns = {}
-    count = 600
-    brightness = 0.2
-    config_file = ""
+    count = 300
+    brightness = 1.0
 
-    def __init__(self, config_file, **kwargs):
+    def __init__(self, **kwargs):
         """
         Constructor
         """
-        self.config_file = config_file
-
-    def load(self):
-        """
-        Loads information from the config file specified.
-        """
-        config = configparser.ConfigParser()
-        config.read(self.config_file)
-
-        self.brightness = float(config['Configuration']['LED_BRIGHTNESS'])
-        self.count = float(config['Configuration']['NUMBER_OF_LEDS'])
