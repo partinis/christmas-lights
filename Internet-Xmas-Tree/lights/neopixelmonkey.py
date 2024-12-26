@@ -1,7 +1,5 @@
 import neopixel
 import board
-from scour.scour import colors
-
 
 class NeoPixel(object):
     def __new__(cls, conf, *args, **kwargs):
