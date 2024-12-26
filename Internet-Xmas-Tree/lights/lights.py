@@ -75,8 +75,8 @@ if __name__ == '__main__':
         state.pattern = int(sys.argv[1])
         state.color1 = (0, 255, 0)
         state.color2 = (0, 0, 255)
-        state.len = 1
-        state.delay = 5000
+        state.len = int(sys.argv[2])
+        state.delay = int(sys.argv[3])
         state.random1 = False
         state.random2 = False
         try:
