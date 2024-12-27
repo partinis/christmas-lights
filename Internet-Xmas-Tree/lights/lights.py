@@ -36,6 +36,7 @@ patterns = [
     'patterns.randomcolors',
     'patterns.twinkle',
     'patterns.scrollrows',
+    'patterns.chaser',
     'patterns.test',
     ]
 
