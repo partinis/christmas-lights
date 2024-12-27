@@ -28,6 +28,7 @@ class Test(Pattern):
 
             for i in range(len(strip)):
                 # color = heat_to_color(heat[i])
+                print("olc"+str(heat[i]))
                 color = heat[i]
                 strip[i] = color
             strip.show()
