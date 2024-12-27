@@ -8,6 +8,7 @@ import neopixelmonkey
 import time
 import threading
 import sys
+import random
 import inspect
 import importlib
 from patterns.pattern import Pattern
@@ -85,15 +86,13 @@ if __name__ == '__main__':
         # state.pattern = int(sys.argv[1])
         try:
             while True:
-                for pattern_handler in pattern_handlers:
-                    # state.pattern = pattern_handler.get_id()
-                    print("rtdsg"+str(pattern_handler))
-                    print("Calling function "+str(state.pattern))
-                    # update the state of the led strip
-                    update(strip, state, pattern_handlers)
-                    # write the data to the led strip
-                    strip.show()
-                    # don't delay at all because the writing process is already slow enough
+                state.pattern = random.choice(pattern_handlers)
+                print("Calling function "+str(state.pattern))
+                # update the state of the led strip
+                update(strip, state, pattern_handlers)
+                # write the data to the led strip
+                strip.show()
+                # don't delay at all because the writing process is already slow enough
         except (KeyboardInterrupt, SystemExit):
             pass
         except Exception as e:
