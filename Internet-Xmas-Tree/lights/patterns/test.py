@@ -2,8 +2,8 @@ from .pattern import Pattern
 import time
 from .putil import *
 
-rowOrginList = [0, 45, 80, 104, 117]
-numPixelList = [45, 35, 24, 13, 4]
+rowOrginList = [0, 45, 80, 104, 117, 128, 158, 203, 236, 264, 290]
+numPixelList = [45, 35, 24, 13, 14, 30, 45, 33, 28, 26, 10]
 
 christmasColors = {
     0: (255, 0, 0),    #Red
