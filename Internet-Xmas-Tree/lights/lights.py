@@ -62,7 +62,7 @@ def update(strip, state, pattern_handlers):
         # if not found, use solid color, which should always be at 0
         pattern_handlers[0].update(strip, state)
 
-def get_random(self, pattern_handlers):
+def get_random(pattern_handlers):
     while True:
         pattern_handler = random.choice(pattern_handlers)
         print("sdfsd"+str(pattern_handler))
