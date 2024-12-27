@@ -4,7 +4,6 @@ Random pattern
 from .putil import *
 
 from .pattern import Pattern
-import random
 import time
 
 class Random(Pattern):
