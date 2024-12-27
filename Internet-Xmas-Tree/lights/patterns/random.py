@@ -26,6 +26,10 @@ class Random(Pattern):
 
     @classmethod
     def update(self, strip, state):
+        state.color1 = (255, 255, 255)
+        state.color2 = (0, 0, 0)
+        state.len = 80
+        state.delay = 10
         if Random.__get_time() > (state.delay + self.last_time):
             self.__set_time()
             # set the background to color2
