@@ -93,6 +93,7 @@ if __name__ == '__main__':
         try:
             while True:
                 # state.pattern = random.choice(pattern_handlers).get_id()
+                print("kfdasfd"+str(pattern_handlers.keys()))
                 print("Calling function "+str(get_random(pattern_handlers)))
                 # update the state of the led strip
                 # update(strip, state, pattern_handlers)
