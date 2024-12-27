@@ -29,7 +29,7 @@ class Test(Pattern):
 
             color = loop % 5
 
-            for row in range(0, 5):
+            for row in range(0, 11):
                 if(color > 4):
                     color = 0
                 fill_row(strip, row, christmasColors[color])
