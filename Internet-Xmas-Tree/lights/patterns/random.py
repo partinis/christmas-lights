@@ -17,6 +17,7 @@ class Random(Pattern):
         for _ in range(50):
             for i in range(10):
                 strip[get_random_pixel()] = get_random_color()
+                time.sleep(0.1)
             strip.show()
             time.sleep(0.1)
             strip.fill((0, 0, 0))
