@@ -1,1 +1,5 @@
 git pull && sudo python3 lights.py
+
+#auto run
+sudo nano /etc/rc.local
+/bin/bash /home/pi/ws2812show/show/run.sh &
