@@ -2,8 +2,7 @@ from .pattern import Pattern
 import time
 from .putil import *
 
-rowOrginList = [0, 45, 80, 104, 117, 128, 158, 203, 236, 264, 290]
-numPixelList = [45, 35, 24, 13, 14, 30, 45, 33, 28, 26, 10]
+NUM_PIXELS = 300
 
 christmasColors = {
     0: (255, 0, 0),    #Red
@@ -22,32 +21,18 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        color = 0
-        loop = 0
-        count = 25
-        while(loop < count):
-
-            color = loop % 5
-
-            for row in range(0, 11):
-                if(color > 4):
-                    color = 0
-                fill_row(strip, row, christmasColors[color])
-                color = color + 1
-
+        for idx in range(0, NUM_PIXELS):
+            strip[idx] = get_random_color()
             strip.show()
-            time.sleep(.5)
-            loop = loop + 1
+            time.sleep(.025)
 
-def fill_row(strip, row, color):
-    """"Fills row with given color
-        row - row to fill (0..4)
-        color - color from christmasColors dictionary
-        Returns - none
-    """
+        for idy in range(0, 5):
+            for idx in range(0, NUM_PIXELS):
+                strip[idx] = christmasColors[idy]
+                strip.show()
+                time.sleep(.025)
 
-    idxStart = rowOrginList[row]
-    numPixels = numPixelList[row]
-
-    for idx in range(idxStart, (idxStart + numPixels)):
-        strip[idx] = color
+        for idx in range(0, NUM_PIXELS):
+            strip[idx] = get_random_color()
+            strip.show()
+            time.sleep(.025)
