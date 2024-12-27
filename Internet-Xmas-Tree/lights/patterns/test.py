@@ -27,7 +27,7 @@ class Test(Pattern):
                 heat[random.randint(0, len(strip) - 1)] += random.randint(160, 255)
 
             for i in range(len(strip)):
-                print("col"+str(heat[i])+"-"+heat_to_color(heat[i]))
+                print("col"+str(heat[i])+"-"+str(heat_to_color(heat[i])))
                 color = heat_to_color(heat[i])
                 strip[i] = color
             strip.show()
