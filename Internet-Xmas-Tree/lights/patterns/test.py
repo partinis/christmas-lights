@@ -1,7 +1,6 @@
 from .pattern import Pattern
 import time
 from .putil import *
-from putil import *
 
 NUM_PIXELS = 300
 HALF_NUM_PIXELS = 150
@@ -10,7 +9,7 @@ class Test(Pattern):
 
     @classmethod
     def get_id(self):
-        return 0
+        return 99
 
     @classmethod
     def update(self, strip, state):
