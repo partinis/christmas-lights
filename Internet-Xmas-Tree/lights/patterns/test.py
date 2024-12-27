@@ -3,6 +3,7 @@ import time
 from .putil import *
 
 NUM_PIXELS = 300
+fade_value = 10
 
 class Test(Pattern):
 
@@ -23,7 +24,7 @@ class Test(Pattern):
             strip.show()
             time.sleep(0.1)
 
-def fade_to_black(strip, index, fade_value):
+def fade_to_black(strip, index):
     """
     Fades the brightness of a specific LED to simulate a 'fade to black' effect.
 
