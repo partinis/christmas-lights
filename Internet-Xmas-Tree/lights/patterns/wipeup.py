@@ -27,10 +27,10 @@ class WipeUp(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        """
-        Updates the LED strip
-
-        """
+        state.color1 = (0, 255, 0)
+        state.color2 = (0, 0, 255)
+        state.len = 1
+        state.delay = 5000
         t = WipeUp.__get_time()
 
         primary = state.color1
