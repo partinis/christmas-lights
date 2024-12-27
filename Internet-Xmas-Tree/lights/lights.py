@@ -86,7 +86,8 @@ if __name__ == '__main__':
         try:
             while True:
                 for pattern_handler in pattern_handlers:
-                    state.pattern = pattern_handler.get_id()
+                    # state.pattern = pattern_handler.get_id()
+                    print("rtdsg"+str(pattern_handler))
                     print("Calling function "+str(state.pattern))
                     # update the state of the led strip
                     update(strip, state, pattern_handlers)
