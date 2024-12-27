@@ -65,7 +65,6 @@ def update(strip, state, pattern_handlers):
 
 
 if __name__ == '__main__':
-    config_file = "../configuration.ini"
     conf = Config()
     state = State()
 
