@@ -42,7 +42,8 @@ patterns = [
     'patterns.fire',
     'patterns.confetti',
     'patterns.test',
-    ]
+]
+
 
 def update(strip, state, pattern_handlers):
     """
@@ -61,6 +62,7 @@ def update(strip, state, pattern_handlers):
     else:
         # if not found, use solid color, which should always be at 0
         pattern_handlers[0].update(strip, state)
+
 
 if __name__ == '__main__':
     config_file = "../configuration.ini"
@@ -90,6 +92,7 @@ if __name__ == '__main__':
                     state.pattern = int(sys.argv[1])
                 else:
                     state.pattern = random.choice(list(pattern_handlers.keys()))
+                print("Calling function " + str(state.pattern))
                 # update the state of the led strip
                 update(strip, state, pattern_handlers)
                 # write the data to the led strip
