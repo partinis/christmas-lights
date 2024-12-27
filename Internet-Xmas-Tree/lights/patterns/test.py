@@ -21,24 +21,15 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        color = 0
-        loops = 130 * 3
-
-        for idx in range(0, NUM_PIXELS):
-            strip[idx] = christmasColors[color]
+        steps = 1
+        color = (255, 0, 0)
+        for b in range(0, 256, steps):
+            scaled_color = (color[0] * b // 255, color[1] * b // 255, color[2] * b // 255)
+            strip.fill(scaled_color)
             strip.show()
-            time.sleep(.025)
-
-            if(((idx + 1) % 26) == 0):
-                color = color + 1
-                if(color > 4):
-                    color = 0
-
-        while(loops):
-            loops = loops - 1
-            temp = strip[NUM_PIXELS - 1]
-            for idx in range((NUM_PIXELS - 1), -1, -1):
-                if(idx):
-                    strip[idx] = strip[idx -1]
-            strip[0] = temp
+            time.sleep(0.1)
+        for b in range(255, -1, -steps):
+            scaled_color = (color[0] * b // 255, color[1] * b // 255, color[2] * b // 255)
+            strip.fill(scaled_color)
             strip.show()
+            time.sleep(0.1)
