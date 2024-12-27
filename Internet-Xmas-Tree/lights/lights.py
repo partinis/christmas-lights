@@ -38,6 +38,7 @@ patterns = [
     'patterns.scrollrows',
     'patterns.chaser',
     'patterns.dashedchaser',
+    'patterns.fire',
     'patterns.test',
     ]
 

@@ -1,42 +1,22 @@
 """
 Random pattern
 """
+from .putil import *
 
 from .pattern import Pattern
 import random
 import time
 
 class Random(Pattern):
-    last_time = 0
-
-    def __init__(self):
-        super(Pattern, self).__init__()
-
-    @staticmethod
-    def __get_time():
-        return time.time() * 1000
-
-    @classmethod
-    def __set_time(self):
-        self.last_time = Random.__get_time()
-
     @classmethod
     def get_id(self):
         return 5
 
     @classmethod
     def update(self, strip, state):
-        state.color1 = (255, 255, 255)
-        state.color2 = (0, 0, 0)
-        state.len = 80
-        state.delay = 10
-        # for i in range (0, 1000):
-        if Random.__get_time() > (state.delay + self.last_time):
-            self.__set_time()
-            # set the background to color2
-            strip.fill(state.color2)
-
-            for x in range(state.length):
-                # pick a random index to set to color1
-                index = random.randint(0, len(strip) - 1)
-                strip[index] = state.color1
+        for _ in range(50):
+            index = random.randint(0, len(strip) - 1)
+            strip[index] = get_random_color()
+            strip.show()
+            time.sleep(0.1)
+            strip[index] = (0, 0, 0)
