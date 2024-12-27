@@ -58,6 +58,6 @@ def heat_to_color(heat):
         # Scale from orange to yellow
         red = 255
         green = 255
-        blue = (t192 - 128) * 255 // 64
+        blue = (t192 - 191) * 255 // 64
 
     return (red, green, blue)
