@@ -8,7 +8,7 @@ class Test(Pattern):
 
     @classmethod
     def get_id(self):
-        return 13
+        return 23
 
     @classmethod
     def update(self, strip, state):

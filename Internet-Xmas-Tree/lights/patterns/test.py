@@ -14,13 +14,12 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        for _ in range(100):  # Number of iterations
-            index = random.randint(0, len(strip) - 1)
-            color = (random.randint(128, 255), random.randint(128, 255), random.randint(128, 255))
-            strip[index] = color
+        length = 20
+        color = (255, 0, 0)
+        for i in range(len(strip) + length):
+            strip.fill((0, 0, 0))  # Clear the strip
+            for j in range(length):
+                if 0 <= i - j < len(strip):
+                    strip[i - j] = color
             strip.show()
             time.sleep(.1)
-            for i in range(len(strip)):
-                faded_color = tuple(max(0, c - 10) for c in strip[i])
-                strip[i] = faded_color
-            strip.show()

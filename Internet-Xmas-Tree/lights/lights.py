@@ -39,6 +39,7 @@ patterns = [
     'patterns.chaser',
     'patterns.dashedchaser',
     'patterns.fire',
+    'patterns.confetti',
     'patterns.test',
     ]
 
