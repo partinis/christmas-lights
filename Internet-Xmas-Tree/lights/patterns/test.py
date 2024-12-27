@@ -15,7 +15,7 @@ class Test(Pattern):
     @classmethod
     def update(self, strip, state):
         color = (255, 0, 0)
-        for j in range(255 * 1):
+        for j in range(255 * 10):
             for i in range(len(strip)):
                 brightness = int((1 + math.sin(i + j / 10.0)) * 127.5)
                 scaled_color = tuple(c * brightness // 255 for c in color)
