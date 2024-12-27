@@ -34,6 +34,7 @@ patterns = [
     'patterns.newkitt',
     'patterns.filldownrandom',
     'patterns.randomcolors',
+    'patterns.test',
     ]
 
 def update(strip, state, pattern_handlers):
