@@ -37,6 +37,7 @@ patterns = [
     'patterns.twinkle',
     'patterns.scrollrows',
     'patterns.chaser',
+    'patterns.dashedchaser',
     'patterns.test',
     ]
 
