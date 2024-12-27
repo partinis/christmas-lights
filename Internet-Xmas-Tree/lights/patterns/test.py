@@ -27,7 +27,6 @@ class Test(Pattern):
                 heat[random.randint(0, len(strip) - 1)] += random.randint(160, 255)
 
             for i in range(len(strip)):
-                print("col"+str(heat[i])+"-"+str(heat_to_color(heat[i])))
                 color = heat_to_color(heat[i])
                 strip[i] = color
             strip.show()
@@ -59,6 +58,6 @@ def heat_to_color(heat):
         # Scale from orange to yellow
         red = 255
         green = 255
-        blue = (t192 - 191) * 255 // 64
+        blue = (t192 - 129) * 255 // 126
 
     return (red, green, blue)
