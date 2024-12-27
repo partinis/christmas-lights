@@ -2,8 +2,17 @@ from .pattern import Pattern
 import time
 from .putil import *
 
-NUM_PIXELS = 300
-HALF_NUM_PIXELS = 150
+rowOrginList = [0, 45, 80, 104, 117]
+numPixelList = [45, 35, 24, 13, 4]
+
+christmasColors = {
+    0: (255, 0, 0),    #Red
+    1: (0, 255, 0),    #Green
+    2: (0, 0, 255),    #Blue
+    3: (255, 140, 0),  #Orange
+    4: (102, 0, 102),  #Puprle
+    5: (0, 0, 0)       #off
+}
 
 class Test(Pattern):
 
@@ -13,25 +22,32 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        delay_count = 0
-        while(delay_count < 1000):
-            strip[get_random_pixel()] = get_random_color()
+        color = 0
+        loop = 0
+        count = 25
+        while(loop < count):
+
+            color = loop % 5
+
+            for row in range(0, 5):
+                if(color > 4):
+                    color = 0
+                fill_row(strip, row, christmasColors[color])
+                color = color + 1
+
             strip.show()
-            time.sleep(.01)
-            delay_count = delay_count + 1
+            time.sleep(.5)
+            loop = loop + 1
 
-        random_color = get_random_color()
+def fill_row(strip, row, color):
+    """"Fills row with given color
+        row - row to fill (0..4)
+        color - color from christmasColors dictionary
+        Returns - none
+    """
 
-        for idx in range(0, HALF_NUM_PIXELS):
-            strip[idx] = random_color
-            strip[(NUM_PIXELS - 1) - idx] = random_color
-            strip.show()
-            time.sleep(.01)
+    idxStart = rowOrginList[row]
+    numPixels = numPixelList[row]
 
-        time.sleep(.25)
-
-        for idx in range(0, HALF_NUM_PIXELS):
-            strip[HALF_NUM_PIXELS + idx] = get_random_color()
-            strip[(HALF_NUM_PIXELS - 1) - idx] = get_random_color()
-            strip.show()
-            time.sleep(.01)
+    for idx in range(idxStart, (idxStart + numPixels)):
+        strip[idx] = color

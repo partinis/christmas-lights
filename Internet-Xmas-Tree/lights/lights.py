@@ -34,6 +34,7 @@ patterns = [
     'patterns.newkitt',
     'patterns.filldownrandom',
     'patterns.randomcolors',
+    'patterns.twinkle',
     'patterns.test',
     ]
 
