@@ -62,12 +62,6 @@ def update(strip, state, pattern_handlers):
         # if not found, use solid color, which should always be at 0
         pattern_handlers[0].update(strip, state)
 
-def get_random(pattern_handlers):
-    while True:
-        pattern_handler = random.choice(pattern_handlers)
-        print("sdfsd"+str(pattern_handler))
-        return pattern_handler.get_id()
-
 if __name__ == '__main__':
     config_file = "../configuration.ini"
     conf = Config()
@@ -92,12 +86,12 @@ if __name__ == '__main__':
         # state.pattern = int(sys.argv[1])
         try:
             while True:
-                # state.pattern = random.choice(pattern_handlers).get_id()
-                print("kfdasfd"+str(pattern_handlers.keys()))
-                print("Calling function "+str(get_random(pattern_handlers)))
+                if len(sys.argv) > 1:
+                    state.pattern = int(sys.argv[1])
+                else:
+                    state.pattern = random.choice(list(pattern_handlers.keys()))
                 # update the state of the led strip
-                # update(strip, state, pattern_handlers)
-                time.sleep(1)
+                update(strip, state, pattern_handlers)
                 # write the data to the led strip
                 strip.show()
                 # don't delay at all because the writing process is already slow enough
