@@ -9,7 +9,7 @@ class Test(Pattern):
 
     @classmethod
     def get_id(self):
-        return 99
+        return 0
 
     @classmethod
     def update(self, strip, state):
