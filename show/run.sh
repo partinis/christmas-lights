@@ -1,4 +1,4 @@
-cd ~/ws2812show/show/lights
+cd /home/pi/ws2812show/show/lights
 git reset --hard
 git pull
 echo "$(date)" > run.log
