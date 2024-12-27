@@ -16,7 +16,7 @@ class Test(Pattern):
         for i in range(len(strip) + len(strip) // 2):
             for j in range(len(strip)):
                 if random.randint(0, 10) > 5:
-                    strip[j] = fade_to_black(strip, j)
+                    strip[j] = (10,10,10)
 
             if i < len(strip):
                 strip[i] = (255, 0, 0)
