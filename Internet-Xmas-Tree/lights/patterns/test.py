@@ -15,7 +15,6 @@ class Test(Pattern):
     def update(self, strip, state):
         delay_count = 0
         while(delay_count < 1000):
-            print("fdsf"+str(get_random_pixel())+"fdsf"+str(get_random_color()))
             strip[get_random_pixel()] = get_random_color()
             time.sleep(.01)
             delay_count = delay_count + 1
