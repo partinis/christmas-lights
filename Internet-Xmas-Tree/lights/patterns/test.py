@@ -12,9 +12,34 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        for j in range(255):
-            for i in range(len(strip)):
-                pixel_index = (i * 256 // len(strip)) + j
-                strip[i] = wheel(pixel_index & 255)
+        trail_decay = 10
+        for i in range(len(strip) + len(strip) // 2):
+            for j in range(len(strip)):
+                if random.randint(0, 10) > 5:
+                    strip[j] = fade_to_black(strip[j], trail_decay)
+
+            if i < len(strip):
+                strip[i] = (255, 0, 0)
             strip.show()
-            time.sleep(wait)
+            time.sleep(0.1)
+
+def fade_to_black(strip, index, fade_value):
+    """
+    Fades the brightness of a specific LED to simulate a 'fade to black' effect.
+
+    Parameters:
+    - strip (neopixel.NeoPixel): The NeoPixel strip object.
+    - index (int): The index of the pixel to fade.
+    - fade_value (int): The amount to fade the pixel by (0-255).
+
+    Returns:
+    - None: The function updates the pixel color in the strip directly.
+    """
+    # Get the current color of the pixel
+    color = strip[index]
+
+    # Calculate the faded color
+    faded_color = tuple(max(0, c - fade_value) for c in color)
+
+    # Update the pixel color
+    strip[index] = faded_color
