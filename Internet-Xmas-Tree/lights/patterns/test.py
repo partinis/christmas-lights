@@ -19,10 +19,10 @@ class Test(Pattern):
             index = random.randint(0, len(strip) - 1)
             strip[index] = color
             strip.show()
-            time.sleep(0.1)
+            time.sleep(.01)
             for b in range(255, 0, -10):  # Fade out
                 faded_color = tuple(c * b // 255 for c in color)
                 strip[index] = faded_color
                 strip.show()
-                time.sleep(0.1 / 5)
+                time.sleep(.01 / 5)
             strip[index] = (0, 0, 0)
