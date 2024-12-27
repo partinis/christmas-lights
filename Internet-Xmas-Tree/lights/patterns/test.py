@@ -4,15 +4,6 @@ from .putil import *
 
 NUM_PIXELS = 300
 
-christmasColors = {
-    0: (255, 0, 0),    #Red
-    1: (0, 255, 0),    #Green
-    2: (0, 0, 255),    #Blue
-    3: (255, 140, 0),  #Orange
-    4: (102, 0, 102),  #Puprle
-    5: (0, 0, 0)       #off
-}
-
 class Test(Pattern):
 
     @classmethod
@@ -21,15 +12,23 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        steps = 1
-        color = (255, 0, 0)
-        for b in range(0, 256, steps):
-            scaled_color = (color[0] * b // 255, color[1] * b // 255, color[2] * b // 255)
-            strip.fill(scaled_color)
+        cooling=55
+        sparking=120
+        heat = [0] * len(strip)
+
+        for _ in range(100):
+            for i in range(len(strip)):
+                heat[i] = max(0, heat[i] - random.randint(0, cooling))
+
+            for i in range(len(strip) - 1, 1, -1):
+                heat[i] = (heat[i - 1] + heat[i - 2] + heat[i - 2]) // 3
+
+            if random.randint(0, 255) < sparking:
+                heat[random.randint(0, len(strip) - 1)] += random.randint(160, 255)
+
+            for i in range(len(strip)):
+                # color = heat_to_color(heat[i])
+                color = (255,0,0)
+                strip[i] = color
             strip.show()
-            time.sleep(0.1)
-        for b in range(255, -1, -steps):
-            scaled_color = (color[0] * b // 255, color[1] * b // 255, color[2] * b // 255)
-            strip.fill(scaled_color)
-            strip.show()
-            time.sleep(0.1)
+            time.sleep(0.03)
