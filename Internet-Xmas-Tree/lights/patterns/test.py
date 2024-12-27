@@ -39,7 +39,8 @@ def fade_to_black(strip, index):
     color = strip[index]
 
     # Calculate the faded color
-    faded_color = tuple(max(0, c - fade_value) for c in color)
+    # faded_color = tuple(max(0, c - fade_value) for c in color)
+    faded_color = (10, 10, 10)
 
     # Update the pixel color
     strip[index] = faded_color
