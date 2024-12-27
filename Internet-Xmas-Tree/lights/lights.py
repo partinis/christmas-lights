@@ -86,7 +86,7 @@ if __name__ == '__main__':
         # state.pattern = int(sys.argv[1])
         try:
             while True:
-                state.pattern = random.choice(pattern_handlers)
+                state.pattern = random.choice(pattern_handlers).get_id()
                 print("Calling function "+str(state.pattern))
                 # update the state of the led strip
                 update(strip, state, pattern_handlers)
