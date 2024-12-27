@@ -14,10 +14,15 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        color = (255, 0, 0)
-        center = len(strip) // 2
-        for r in range(center):
-            strip.fill((0, 0, 0))
-            strip[center - r:center + r] = [color] * (2 * r)
+        color = (255,0,0)
+        for _ in range(50):  # Number of twinkles
+            index = random.randint(0, len(strip) - 1)
+            strip[index] = color
             strip.show()
             time.sleep(0.1)
+            for b in range(255, 0, -10):  # Fade out
+                faded_color = tuple(c * b // 255 for c in color)
+                strip[index] = faded_color
+                strip.show()
+                time.sleep(0.1 / 5)
+            strip[index] = (0, 0, 0)
