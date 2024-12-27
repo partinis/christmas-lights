@@ -95,7 +95,8 @@ if __name__ == '__main__':
                 # state.pattern = random.choice(pattern_handlers).get_id()
                 print("Calling function "+str(get_random(pattern_handlers)))
                 # update the state of the led strip
-                update(strip, state, pattern_handlers)
+                # update(strip, state, pattern_handlers)
+                time.sleep(1)
                 # write the data to the led strip
                 strip.show()
                 # don't delay at all because the writing process is already slow enough
