@@ -21,10 +21,13 @@ class Test(Pattern):
         delay=0.1
         gravity=0.8
         center = random.randint(0, NUM_PIXELS - 1)
-        for j in range(256):
+        center = random.randint(0, NUM_PIXELS - 1)
+        for radius in range(1, 10):
             for i in range(NUM_PIXELS):
-                green_intensity = int((math.sin(i + j) + 1) * 127)
-                blue_intensity = int((math.cos(i + j) + 1) * 127)
-                strip.setPixelColor(i, (0, green_intensity, blue_intensity))
+                distance = abs(center - i)
+                if distance == radius:
+                    strip.setPixelColor(i, (0, 0, 255))  # Blue ripple
+                else:
+                    strip.setPixelColor(i, (0, 0, 0))  # Off
             strip.show()
             time.sleep(delay)
