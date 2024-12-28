@@ -22,12 +22,9 @@ class Test(Pattern):
         gravity=0.8
         center = random.randint(0, NUM_PIXELS - 1)
         center = random.randint(0, NUM_PIXELS - 1)
-        for radius in range(1, 10):
-            for i in range(NUM_PIXELS):
-                distance = abs(center - i)
-                if distance == radius:
-                    strip.setPixelColor(i, (0, 0, 255))  # Blue ripple
-                else:
-                    strip.setPixelColor(i, (0, 0, 0))  # Off
-            strip.show()
-            time.sleep(delay)
+        for i in range(NUM_PIXELS):
+            red_intensity = random.randint(180, 255)
+            green_intensity = random.randint(50, 150)
+            strip.setPixelColor(i, (red_intensity, green_intensity, 0))
+        strip.show()
+        time.sleep(delay)
