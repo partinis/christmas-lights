@@ -14,12 +14,12 @@ class Test(Pattern):
     @classmethod
     def update(self, strip, state):
         color = (0,0,255)
-        trail_color=(0, 0, 0)
-        for i in range(NUM_PIXELS + 3):
-            for j in range(NUM_PIXELS):
-                strip.setPixelColor(j, trail_color)  # Clear trail
-            for j in range(3):
-                if 0 <= i - j < NUM_PIXELS:
-                    strip.setPixelColor(i - j, color)  # Draw moving light
-            strip.show()
-            time.sleep(.1)
+        for _ in range(5):  # Number of fireworks
+            burst_center = random.randint(0, NUM_PIXELS - 1)
+            for radius in range(1, 10):  # Expand outward
+                for i in range(max(0, burst_center - radius), min(NUM_PIXELS, burst_center + radius)):
+                    strip.setPixelColor(i, color)
+                strip.show()
+                time.sleep(.05)
+                for i in range(max(0, burst_center - radius), min(NUM_PIXELS, burst_center + radius)):
+                    strip.setPixelColor(i, (0, 0, 0))  # Clear
