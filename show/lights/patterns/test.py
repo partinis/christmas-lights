@@ -14,10 +14,14 @@ class Test(Pattern):
     @classmethod
     def update(self, strip, state):
         color = get_random_color()
-        for j in range(0, 256 * 1):
-            for i in range(NUM_PIXELS):
-                intensity = (math.sin(i + j) * 127 + 128) / 255  # Sine wave intensity
-                adjusted_color = tuple(int(c * intensity) for c in color)
-                strip.setPixelColor(i, adjusted_color)
+        for i in range(NUM_PIXELS):
+            if i % 2 == 0:
+                strip.setPixelColor(i, (0, 0, 255))  # Blue
+            else:
+                strip.setPixelColor(i, (255, 255, 255))  # White
+        strip.show()
+        time.sleep(.1)
+        for i in range(NUM_PIXELS):
+            strip.setPixelColor(i, (0, 0, 0))  # Turn off for dripping effect
             strip.show()
-            time.sleep(.05)
+            time.sleep(.1 / 2)
