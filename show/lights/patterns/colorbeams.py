@@ -45,6 +45,6 @@ class ColorBeams(Pattern):
             offset = int(((t % state.delay) / state.delay) * len(strip))
             for y in range(0, len(strip), 50):
                 ColorBeams.highlight(strip, offset + y, (5 * y / len(strip)) % 1)
-            strip.show()
-            time.sleep(1)
+                strip.show()
+            time.sleep(.1)
 
