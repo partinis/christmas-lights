@@ -27,23 +27,25 @@ class WipeUp(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        state.color1 = (0, 255, 0)
-        state.color2 = (0, 0, 255)
-        state.len = 1
-        state.delay = 5000
-        t = WipeUp.__get_time()
+        for _ in range(100):
+            state.color1 = (0, 255, 0)
+            state.color2 = (0, 0, 255)
+            state.len = 1
+            state.delay = 5000
+            t = WipeUp.__get_time()
 
-        primary = state.color1
-        secondary = state.color2
+            primary = state.color1
+            secondary = state.color2
 
-        # based on this time, determines how far the wipe is, and what the background color is
-        if (t // state.delay) % 2 == 0:
-            primary = state.color2
-            secondary = state.color1
-        # how far along the wipe has "completed"
-        completed = (t % state.delay) / state.delay
-        completed_pixel = int(len(strip) * completed)
-        # fill the strip
-        strip.fill(secondary)
-        for idx in range(completed_pixel):
-            strip[idx] = primary
+            # based on this time, determines how far the wipe is, and what the background color is
+            if (t // state.delay) % 2 == 0:
+                primary = state.color2
+                secondary = state.color1
+            # how far along the wipe has "completed"
+            completed = (t % state.delay) / state.delay
+            completed_pixel = int(len(strip) * completed)
+            # fill the strip
+            strip.fill(secondary)
+            for idx in range(completed_pixel):
+                strip[idx] = primary
+            strip.show()
