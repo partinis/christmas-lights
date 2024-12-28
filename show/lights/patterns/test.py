@@ -30,7 +30,7 @@ class Test(Pattern):
             snow[0] = 0
             for i in range(NUM_PIXELS):
                 if snow[i]:
-                    strip.setPixelColor(i, (255, 255, 255))
+                    strip.setPixelColor(i, get_random_color())
                 else:
                     strip.setPixelColor(i, (0, 0, 0))
             strip.show()
