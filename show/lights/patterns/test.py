@@ -16,11 +16,10 @@ class Test(Pattern):
         color1 = get_random_color()
         color2 = get_random_color()
         iterations=100
-        for _ in range(iterations):
-            for i in range(NUM_PIXELS):
-                if random.random() < 0.2:  # 20% chance of a snowflake
-                    strip.setPixelColor(i, (255, 255, 255))  # White
-                else:
-                    strip.setPixelColor(i, (0, 0, 0))  # Off
-            strip.show()
-            time.sleep(.05)
+        colors = [(0, 255, 128), (0, 64, 255), (0, 128, 255), (0, 255, 64)]
+        for _ in range(50):  # Cycles
+            for color in colors:
+                for i in range(NUM_PIXELS):
+                    strip.setPixelColor(i, color)
+                strip.show()
+                time.sleep(.1)
