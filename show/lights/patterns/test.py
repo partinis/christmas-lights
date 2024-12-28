@@ -17,12 +17,11 @@ class Test(Pattern):
         color2 = get_random_color()
         iterations=100
         delay=0.1
-        for _ in range(iterations):
-            burst_center = random.randint(0, NUM_PIXELS - 1)
-            for radius in range(1, 10):
-                for i in range(max(0, burst_center - radius), min(NUM_PIXELS, burst_center + radius)):
-                    strip.setPixelColor(i, (255, 255, 255))  # Bright explosion
-                strip.show()
-                time.sleep(delay)
-                for i in range(max(0, burst_center - radius), min(NUM_PIXELS, burst_center + radius)):
-                    strip.setPixelColor(i, (0, 0, 0))  # Fade out
+        for i in range(strip.numPixels() + size):
+            for j in range(strip.numPixels()):
+                strip.setPixelColor(j, (0, 0, 0))  # Clear all
+            for j in range(size):
+                if 0 <= i - j < strip.numPixels():
+                    strip.setPixelColor(i - j, color)
+            strip.show()
+            time.sleep(delay)
