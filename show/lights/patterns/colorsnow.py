@@ -26,4 +26,4 @@ class Colorsnow(Pattern):
                 else:
                     strip.setPixelColor(i, (0, 0, 0))
             strip.show()
-            time.sleep(delay*random.randint(1, 9))
+            time.sleep(delay*random.randint(1, 2))
