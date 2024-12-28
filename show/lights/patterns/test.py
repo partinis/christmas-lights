@@ -20,10 +20,11 @@ class Test(Pattern):
         size = 5
         delay=0.1
         gravity=0.8
-        colors = [(255, 0, 0), (255, 64, 0), (255, 128, 0), (255, 192, 64)]
-        for j in range(256):
-            for i in range(NUM_PIXELS):
-                color_index = (i + j) % len(colors)
-                strip.setPixelColor(i, colors[color_index])
+        for i in range(NUM_PIXELS + 5):
+            for j in range(NUM_PIXELS):
+                strip.setPixelColor(j, (0, 0, 0))  # Clear
+            for j in range(5):
+                if 0 <= i - j < NUM_PIXELS:
+                    strip.setPixelColor(i - j, (255, 255, 255))  # White trail
             strip.show()
             time.sleep(delay)
