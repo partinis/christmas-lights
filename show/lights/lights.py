@@ -42,6 +42,7 @@ patterns = [
     'patterns.fire',
     'patterns.confetti',
     'patterns.fireworks',
+    'patterns.colorsnow',
     'patterns.test',
 ]
 
