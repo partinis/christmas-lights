@@ -13,15 +13,17 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
+        color = get_random_color()
         color1 = get_random_color()
         color2 = get_random_color()
         iterations=100
+        size = 5
         delay=0.1
-        for i in range(strip.numPixels() + size):
-            for j in range(strip.numPixels()):
+        for i in range(NUM_PIXELS + size):
+            for j in range(NUM_PIXELS):
                 strip.setPixelColor(j, (0, 0, 0))  # Clear all
             for j in range(size):
-                if 0 <= i - j < strip.numPixels():
+                if 0 <= i - j < NUM_PIXELS:
                     strip.setPixelColor(i - j, color)
             strip.show()
             time.sleep(delay)
