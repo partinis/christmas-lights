@@ -13,7 +13,7 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        for i in range(strip.numPixels()):
+        for i in range(NUM_PIXELS):
             r = random.randint(100, 255)
             g = random.randint(50, 150)
             b = random.randint(0, 50)
