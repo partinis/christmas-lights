@@ -13,10 +13,13 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        for _ in range(10):
-            led = random.randint(0, NUM_PIXELS - 1)
-            color = (random.randint(128, 255), random.randint(128, 255), random.randint(128, 255))  # Random soft colors
-            strip.setPixelColor(led, color)
+        color = (0,0,255)
+        trail_color=(0, 0, 0)
+        for i in range(NUM_PIXELS + 3):
+            for j in range(NUM_PIXELS):
+                strip.setPixelColor(j, trail_color)  # Clear trail
+            for j in range(3):
+                if 0 <= i - j < NUM_PIXELS:
+                    strip.setPixelColor(i - j, color)  # Draw moving light
             strip.show()
-            time.sleep(.05)
-            strip.setPixelColor(led, (0, 0, 0))  # Turn it off
+            time.sleep(.1)
