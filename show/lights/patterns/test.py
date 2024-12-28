@@ -15,11 +15,12 @@ class Test(Pattern):
     def update(self, strip, state):
         color1 = get_random_color()
         color2 = get_random_color()
-        for t in range(50):
-            blend_color = tuple(
-                int(color1[i] + (color2[i] - color1[i]) * (t / 50)) for i in range(3)
-            )
+        iterations=100
+        for _ in range(iterations):
             for i in range(NUM_PIXELS):
-                strip.setPixelColor(i, blend_color)
+                if random.random() < 0.2:  # 20% chance of a snowflake
+                    strip.setPixelColor(i, (255, 255, 255))  # White
+                else:
+                    strip.setPixelColor(i, (0, 0, 0))  # Off
             strip.show()
-            time.sleep(.01)
+            time.sleep(.05)
