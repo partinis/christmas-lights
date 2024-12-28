@@ -13,15 +13,13 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        color = get_random_color()
-        for i in range(NUM_PIXELS):
-            if i % 2 == 0:
-                strip.setPixelColor(i, (0, 0, 255))  # Blue
-            else:
-                strip.setPixelColor(i, (255, 255, 255))  # White
-        strip.show()
-        time.sleep(.1)
-        for i in range(NUM_PIXELS):
-            strip.setPixelColor(i, (0, 0, 0))  # Turn off for dripping effect
+        color1 = get_random_color()
+        color2 = get_random_color()
+        for t in range(50):
+            blend_color = tuple(
+                int(color1[i] + (color2[i] - color1[i]) * (t / 50)) for i in range(3)
+            )
+            for i in range(NUM_PIXELS):
+                strip.setPixelColor(i, blend_color)
             strip.show()
-            time.sleep(.1 / 2)
+            time.sleep(.01)
