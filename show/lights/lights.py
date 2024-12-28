@@ -21,7 +21,7 @@ patterns = [
     # 'patterns.blink',
     'patterns.scroll',
     'patterns.wipeup',
-    'patterns.wipedown',
+    # 'patterns.wipedown',
     'patterns.random',
     'patterns.larson',
     'patterns.scrollsmooth',
