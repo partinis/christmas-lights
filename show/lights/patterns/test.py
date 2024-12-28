@@ -13,12 +13,11 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        for _ in range(20):  # Number of fireworks
-            burst_center = random.randint(0, NUM_PIXELS - 1)
-            for radius in range(1, 10):  # Expand outward
-                for i in range(max(0, burst_center - radius), min(NUM_PIXELS, burst_center + radius)):
-                    strip.setPixelColor(i, get_random_color())
-                strip.show()
-                time.sleep(.05)
-                for i in range(max(0, burst_center - radius), min(NUM_PIXELS, burst_center + radius)):
-                    strip.setPixelColor(i, (0, 0, 0))  # Clear
+        color = get_random_color()
+        for j in range(0, 256 * 1):
+            for i in range(strip.numPixels()):
+                intensity = (math.sin(i + j) * 127 + 128) / 255  # Sine wave intensity
+                adjusted_color = tuple(int(c * intensity) for c in color)
+                strip.setPixelColor(i, adjusted_color)
+            strip.show()
+            time.sleep(.05)
