@@ -19,7 +19,7 @@ class Colorsnow(Pattern):
         for _ in range(100):
             snow[random.randint(0, NUM_PIXELS - 1)] = 1
             for i in range(NUM_PIXELS - 1, 0, -1):
-                snow[i] = snow[i - random.randint(1, 2) - 1]
+                snow[i] = snow[i - random.randint(1, 3) - 1]
             snow[0] = 0
             for i in range(NUM_PIXELS):
                 if snow[i]:
