@@ -13,10 +13,15 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
+        color = (255, 255, 255)
         for i in range(NUM_PIXELS):
-            r = random.randint(100, 255)
-            g = random.randint(50, 150)
-            b = random.randint(0, 50)
-            strip.setPixelColor(i, (r, g, b))
-        strip.show()
-        time.sleep(0.1)
+            strip.setPixelColor(i, (0, 0, 0))  # Clear all LEDs
+        snowflakes = [random.randint(0, NUM_PIXELS - 1) for _ in range(5)]  # Random starting points
+        for _ in range(NUM_PIXELS):
+            for i in range(len(snowflakes)):
+                if snowflakes[i] > 0:
+                    strip.setPixelColor(snowflakes[i], (0, 0, 0))  # Turn off old position
+                    snowflakes[i] -= 1
+                    strip.setPixelColor(snowflakes[i], color)  # Set new position
+            strip.show()
+            time.sleep(0.1)
