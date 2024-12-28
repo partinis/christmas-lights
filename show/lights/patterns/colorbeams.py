@@ -39,9 +39,12 @@ class ColorBeams(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        # use the time to determine the offset
-        t = ColorBeams.__get_time()
-        offset = int(((t % state.delay) / state.delay) * len(strip))
-        for y in range(0, len(strip), 50):
-            ColorBeams.highlight(strip, offset + y, (5 * y / len(strip)) % 1)
+        for _ in range(100):
+            # use the time to determine the offset
+            t = ColorBeams.__get_time()
+            offset = int(((t % state.delay) / state.delay) * len(strip))
+            for y in range(0, len(strip), 50):
+                ColorBeams.highlight(strip, offset + y, (5 * y / len(strip)) % 1)
+            strip.show()
+            time.sleep(.1)
 
