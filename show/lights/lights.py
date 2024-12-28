@@ -24,7 +24,7 @@ patterns = [
     # 'patterns.wipedown',
     'patterns.random',
     'patterns.larson',
-    'patterns.scrollsmooth',
+    # 'patterns.scrollsmooth',
     # 'patterns.pulse',
     'patterns.traditional',
     'patterns.colorbeams',
