@@ -13,7 +13,6 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        colors = [(0, 255, 128), (0, 64, 255), (0, 128, 128), (0, 255, 64)]
         color = get_random_color()
         color1 = get_random_color()
         color2 = get_random_color()
@@ -21,17 +20,12 @@ class Test(Pattern):
         size = 5
         delay=0.1
         gravity=0.8
-        positions = [0] * len(colors)
-        velocities = [0] * len(colors)
-        while True:
-            for i in range(len(colors)):
-                velocities[i] += gravity
-                positions[i] += velocities[i]
-                if positions[i] >= NUM_PIXELS:
-                    positions[i] = NUM_PIXELS - 1
-                    velocities[i] *= -0.9
-                strip.setPixelColor(int(positions[i]), colors[i])
+        colors = [(0, 255, 128), (0, 64, 255), (0, 128, 128), (0, 255, 64)]
+        for j in range(256):
+            for i in range(NUM_PIXELS):
+                color_index = (i + j) % len(colors)
+                intensity = (math.sin(i + j) * 127 + 128) / 255  # Sine wave
+                adjusted_color = tuple(int(c * intensity) for c in colors[color_index])
+                strip.setPixelColor(i, adjusted_color)
             strip.show()
             time.sleep(delay)
-            for i in range(NUM_PIXELS):
-                strip.setPixelColor(i, (0, 0, 0))  # Clear strip
