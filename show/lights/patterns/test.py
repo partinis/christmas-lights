@@ -20,11 +20,11 @@ class Test(Pattern):
         size = 5
         delay=0.1
         gravity=0.8
-        for i in range(NUM_PIXELS + 5):
-            for j in range(NUM_PIXELS):
-                strip.setPixelColor(j, (0, 0, 0))  # Clear
-            for j in range(5):
-                if 0 <= i - j < NUM_PIXELS:
-                    strip.setPixelColor(i - j, (255, 255, 255))  # White trail
+        center = random.randint(0, NUM_PIXELS - 1)
+        for radius in range(1, 10):
+            for i in range(max(0, center - radius), min(NUM_PIXELS, center + radius)):
+                strip.setPixelColor(i, color)
             strip.show()
             time.sleep(delay)
+            for i in range(max(0, center - radius), min(NUM_PIXELS, center + radius)):
+                strip.setPixelColor(i, (0, 0, 0))
