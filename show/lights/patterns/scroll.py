@@ -20,7 +20,6 @@ class Scroll(Pattern):
         for _ in range(100):
             # iterate through
             offset = int(time.time() * 1000 / float(state.delay))
-            print("time"+str(offset))
             for x in range(len(strip)):
                 # default color 1
                 color = state.color1
@@ -31,3 +30,4 @@ class Scroll(Pattern):
                     color = state.color2
                 # set color
                 strip[x] = color
+            strip.show()
