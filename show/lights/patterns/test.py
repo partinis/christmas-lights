@@ -15,7 +15,7 @@ class Test(Pattern):
     def update(self, strip, state):
         color = get_random_color()
         for j in range(0, 256 * 1):
-            for i in range(strip.numPixels()):
+            for i in range(NUM_PIXELS):
                 intensity = (math.sin(i + j) * 127 + 128) / 255  # Sine wave intensity
                 adjusted_color = tuple(int(c * intensity) for c in color)
                 strip.setPixelColor(i, adjusted_color)
