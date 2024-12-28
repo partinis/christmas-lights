@@ -14,12 +14,11 @@ class Test(Pattern):
     @classmethod
     def update(self, strip, state):
         colors = {
-            0: (255, 0, 0),    #Red
-            1: (0, 255, 0),    #Green
-            2: (0, 0, 255),    #Blue
-            3: (255, 140, 0),  #Orange
-            4: (102, 0, 102),  #Puprle
-            5: (0, 0, 0)       #off
+            (255, 0, 0),    #Red
+            (0, 255, 0),    #Green
+            (0, 0, 255),    #Blue
+            (255, 140, 0),  #Orange
+            (102, 0, 102),  #Puprle
         }
         color = get_random_color()
         color1 = get_random_color()
