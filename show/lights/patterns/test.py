@@ -4,7 +4,6 @@ import math
 from .putil import *
 
 NUM_PIXELS = 300
-fade_value = 10
 
 class Test(Pattern):
 
@@ -14,12 +13,10 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        length = 20
-        color = (255, 0, 0)
-        for i in range(len(strip) + length):
-            strip.fill((0, 0, 0))  # Clear the strip
-            for j in range(length):
-                if 0 <= i - j < len(strip):
-                    strip[i - j] = color
-            strip.show()
-            time.sleep(.1)
+        for i in range(strip.numPixels()):
+            r = random.randint(100, 255)
+            g = random.randint(50, 150)
+            b = random.randint(0, 50)
+            strip.setPixelColor(i, (r, g, b))
+        strip.show()
+        time.sleep(0.1)
