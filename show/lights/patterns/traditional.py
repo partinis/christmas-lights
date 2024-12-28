@@ -3,6 +3,7 @@
 lights that just stay static based on the index of the led
 don't animate or anything
 """
+import time
 
 from .pattern import Pattern
 import random
@@ -42,5 +43,8 @@ class Traditional(Pattern):
     def update(self, strip, state):
         # set all of the strip colors to be one of the preset colors
         strip.fill((0, 0, 0))
-        for index in range(0, len(strip), 2):
-            strip[index] = self.colors[index % len(self.colors)]
+        for _ in range(100):
+            for index in range(0, len(strip), 2):
+                strip[index] = self.colors[index % len(self.colors)]
+            strip.show()
+            time.sleep(.1)
