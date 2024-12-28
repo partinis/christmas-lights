@@ -21,11 +21,11 @@ class Test(Pattern):
         delay=0.1
         gravity=0.8
         colors = [(0, 255, 128), (0, 64, 255), (0, 128, 128), (0, 255, 64)]
-        for j in range(256):
+        for offset in range(NUM_PIXELS):
             for i in range(NUM_PIXELS):
-                color_index = (i + j) % len(colors)
-                intensity = (math.sin(i + j) * 127 + 128) / 255  # Sine wave
-                adjusted_color = tuple(int(c * intensity) for c in colors[color_index])
-                strip.setPixelColor(i, adjusted_color)
+                if (i + offset) % 3 == 0:
+                    strip.setPixelColor(i, color)
+                else:
+                    strip.setPixelColor(i, (0, 0, 0))
             strip.show()
             time.sleep(delay)
