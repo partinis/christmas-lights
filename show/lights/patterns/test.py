@@ -20,12 +20,10 @@ class Test(Pattern):
         size = 5
         delay=0.1
         gravity=0.8
-        colors = [(0, 255, 128), (0, 64, 255), (0, 128, 128), (0, 255, 64)]
-        for offset in range(NUM_PIXELS):
+        colors = [(255, 0, 0), (255, 64, 0), (255, 128, 0), (255, 192, 64)]
+        for j in range(256):
             for i in range(NUM_PIXELS):
-                if (i + offset) % 3 == 0:
-                    strip.setPixelColor(i, color)
-                else:
-                    strip.setPixelColor(i, (0, 0, 0))
+                color_index = (i + j) % len(colors)
+                strip.setPixelColor(i, colors[color_index])
             strip.show()
             time.sleep(delay)
