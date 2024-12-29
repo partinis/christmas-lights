@@ -8,6 +8,8 @@ from .pattern import Pattern
 import colorsys
 import time
 
+NUM_PIXELS = 300
+
 class ColorBeams(Pattern):
 
     @staticmethod
@@ -17,16 +19,15 @@ class ColorBeams(Pattern):
 
     @staticmethod
     def highlight(strip, i, hue = 0.5):
-        i = i % len(strip)
+        i = i % NUM_PIXELS
         # set the color of this pixel
         strip[i] = ColorBeams.getHue(hue)
         for x in range(20):
-            index = (i - x) % len(strip)
+            index = (i - x) % NUM_PIXELS
             decay = pow(0.7, x)
             # strip[index] = (int(strip[index][0] * decay), int(strip[index][1] * decay), int(strip[index][2] * decay))
             strip[index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
-            print("test"+str(len(strip)-index))
-            # strip[len(strip)-index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
+            strip[NUM_PIXELS-index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
 
     @staticmethod
     def __get_time():
@@ -41,8 +42,8 @@ class ColorBeams(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        for i in range(len(strip)):
-            for y in range(0, len(strip), 50):
-                ColorBeams.highlight(strip, i + y, (5 * y / len(strip)) % 1)
+        for i in range(NUM_PIXELS):
+            for y in range(0, NUM_PIXELS, 50):
+                ColorBeams.highlight(strip, i + y, (5 * y / NUM_PIXELS) % 1)
             if i % 1 == 0:
                 strip.show()
