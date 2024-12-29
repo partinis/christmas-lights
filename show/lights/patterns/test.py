@@ -5,7 +5,7 @@ from .putil import *
 
 NUM_PIXELS = 300
 
-class ColorBeams(Pattern):
+class Test(Pattern):
 
     @staticmethod
     def getHue(hue):
@@ -16,7 +16,7 @@ class ColorBeams(Pattern):
     def highlight(strip, i, hue = 0.5):
         i = i % len(strip)
         # set the color of this pixel
-        strip[i] = ColorBeams.getHue(hue)
+        strip[i] = Test.getHue(hue)
         for x in range(20):
             index = (i - x) % len(strip)
             decay = pow(0.7, x)
