@@ -27,7 +27,7 @@ class ColorBeams(Pattern):
             decay = pow(0.7, x)
             # strip[index] = (int(strip[index][0] * decay), int(strip[index][1] * decay), int(strip[index][2] * decay))
             strip[index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
-            strip[int((NUM_PIXELS-index)/2)] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
+            strip[NUM_PIXELS-index-1] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
 
     @staticmethod
     def __get_time():
