@@ -10,7 +10,7 @@ import configparser
 class Config(object):
     patterns = {}
     count = 300
-    brightness = .05
+    brightness = .08
 
     def __init__(self, **kwargs):
         """

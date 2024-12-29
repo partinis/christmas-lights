@@ -43,7 +43,7 @@ patterns = [
     'patterns.confetti',
     'patterns.fireworks',
     'patterns.colorsnow',
-    'patterns.test',
+    # 'patterns.test',
 ]
 
 
