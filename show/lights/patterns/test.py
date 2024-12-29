@@ -39,6 +39,6 @@ class Test(Pattern):
     def update(self, strip, state):
         for i in range(len(strip)):
             for y in range(0, len(strip), 50):
-                ColorBeams.highlight(strip, i + y, (5 * y / len(strip)) % 1)
+                Test.highlight(strip, i + y, (5 * y / len(strip)) % 1)
             if i % 1 == 0:
                 strip.show()
