@@ -5,7 +5,31 @@ from .putil import *
 
 NUM_PIXELS = 300
 
-class Test(Pattern):
+class ColorBeams(Pattern):
+
+    @staticmethod
+    def getHue(hue):
+        hsv = colorsys.hsv_to_rgb(hue, 1, 1)
+        return int(hsv[0] * 255), int(hsv[1] * 255), int(hsv[2] * 255)
+
+    @staticmethod
+    def highlight(strip, i, hue = 0.5):
+        i = i % len(strip)
+        # set the color of this pixel
+        strip[i] = ColorBeams.getHue(hue)
+        for x in range(20):
+            index = (i - x) % len(strip)
+            decay = pow(0.7, x)
+            # strip[index] = (int(strip[index][0] * decay), int(strip[index][1] * decay), int(strip[index][2] * decay))
+            strip[index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
+            strip[len(strip)-index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
+
+    @staticmethod
+    def __get_time():
+        return time.time() * 1000
+
+    def __init__(self):
+        pass
 
     @classmethod
     def get_id(self):
@@ -13,25 +37,8 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        color = get_random_color()
-        color1 = get_random_color()
-        color2 = get_random_color()
-        iterations=100
-        size = 5
-        delay=0.1
-        gravity=0.8
-        center = random.randint(0, NUM_PIXELS - 1)
-        center = random.randint(0, NUM_PIXELS - 1)
-        snow = [0] * NUM_PIXELS
-        for _ in range(100):
-            snow[random.randint(0, NUM_PIXELS - 1)] = 1
-            for i in range(NUM_PIXELS - 1, 0, -1):
-                snow[i] = snow[i - 1]
-            snow[0] = 0
-            for i in range(NUM_PIXELS):
-                if snow[i]:
-                    strip.setPixelColor(i, get_random_color())
-                else:
-                    strip.setPixelColor(i, (0, 0, 0))
-            strip.show()
-            time.sleep(delay)
+        for i in range(len(strip)):
+            for y in range(0, len(strip), 50):
+                ColorBeams.highlight(strip, i + y, (5 * y / len(strip)) % 1)
+            if i % 1 == 0:
+                strip.show()
