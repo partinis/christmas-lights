@@ -1,11 +1,14 @@
+"""
+Color beams pattern 2
+
+"""
+
 from .pattern import Pattern
+
+import colorsys
 import time
-import math
-from .putil import *
 
-NUM_PIXELS = 300
-
-class Test(Pattern):
+class ColorBeams(Pattern):
 
     @staticmethod
     def getHue(hue):
@@ -16,13 +19,12 @@ class Test(Pattern):
     def highlight(strip, i, hue = 0.5):
         i = i % len(strip)
         # set the color of this pixel
-        strip[i] = Test.getHue(hue)
+        strip[i] = ColorBeams.getHue(hue)
         for x in range(20):
             index = (i - x) % len(strip)
             decay = pow(0.7, x)
             # strip[index] = (int(strip[index][0] * decay), int(strip[index][1] * decay), int(strip[index][2] * decay))
             strip[index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
-            strip[len(strip)-index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
 
     @staticmethod
     def __get_time():
@@ -39,6 +41,6 @@ class Test(Pattern):
     def update(self, strip, state):
         for i in range(len(strip)):
             for y in range(0, len(strip), 50):
-                Test.highlight(strip, i + y, (5 * y / len(strip)) % 1)
+                ColorBeams.highlight(strip, i + y, (5 * y / len(strip)) % 1)
             if i % 1 == 0:
                 strip.show()
