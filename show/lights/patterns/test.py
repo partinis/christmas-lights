@@ -1,40 +1,12 @@
-"""
-Color beams pattern 2
-
-"""
-
 from .pattern import Pattern
-
-import colorsys
 import time
+import math
+from .putil import *
 
 NUM_PIXELS = 300
+NUM_LEDS = 300
 
-class ColorBeams(Pattern):
-
-    @staticmethod
-    def getHue(hue):
-        hsv = colorsys.hsv_to_rgb(hue, 1, 1)
-        return int(hsv[0] * 255), int(hsv[1] * 255), int(hsv[2] * 255)
-
-    @staticmethod
-    def highlight(strip, i, hue = 0.5):
-        i = i % NUM_PIXELS
-        # set the color of this pixel
-        strip[i] = ColorBeams.getHue(hue)
-        for x in range(20):
-            index = (i - x) % NUM_PIXELS
-            decay = pow(0.7, x)
-            # strip[index] = (int(strip[index][0] * decay), int(strip[index][1] * decay), int(strip[index][2] * decay))
-            strip[index] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
-            strip[NUM_PIXELS-index-1] = (int(strip[i][0] * decay), int(strip[i][1] * decay), int(strip[i][2] * decay))
-
-    @staticmethod
-    def __get_time():
-        return time.time() * 1000
-
-    def __init__(self):
-        pass
+class Test(Pattern):
 
     @classmethod
     def get_id(self):
@@ -42,8 +14,32 @@ class ColorBeams(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        for i in range(NUM_PIXELS):
-            for y in range(0, NUM_PIXELS, 50):
-                ColorBeams.highlight(strip, i + y, (5 * y / NUM_PIXELS) % 1)
-            if i % 1 == 0:
-                strip.show()
+        color = get_random_color()
+        color1 = get_random_color()
+        color2 = get_random_color()
+        red = get_random_color()
+        green = get_random_color()
+        blue = get_random_color()
+        iterations=100
+        size = 5
+        delay=0.1
+        gravity=0.8
+        EyeSize = 4
+        center = random.randint(0, NUM_PIXELS - 1)
+        center = random.randint(0, NUM_PIXELS - 1)
+        snow = [0] * NUM_PIXELS
+        for i in range(NUM_LEDS - EyeSize - 2):
+            strip.setAll(0, 0, 0)  # Turn off all LEDs
+
+            # Set the leading dim pixel
+            strip.setPixelColor(i, red // 10, green // 10, blue // 10)
+
+            # Set the "eye" of the effect
+            for j in range(1, EyeSize + 1):
+                strip.setPixel(i + j, red, green, blue)
+
+            # Set the trailing dim pixel
+            strip.setPixelColor(i + EyeSize + 1, red // 10, green // 10, blue // 10)
+
+            strip.show()  # Update the LED strip
+            time.sleep(delay)
