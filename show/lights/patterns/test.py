@@ -17,7 +17,7 @@ class Test(Pattern):
         positions = [random.randint(0, NUM_LEDS - 1) for _ in range(num_pixels)]  # Random starting positions
         directions = [1 if random.random() > 0.5 else -1 for _ in range(num_pixels)]  # Random initial directions
 
-        while max(positions) >= 0:  # Continue while pixels are within bounds
+        for _ in range(NUM_LEDS):
             # Clear the strip
             strip.fill((0, 0, 0))
 
