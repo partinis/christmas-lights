@@ -27,18 +27,26 @@ class Test(Pattern):
         EyeSize = 4
         center = random.randint(0, NUM_PIXELS - 1)
         snow = [0] * NUM_PIXELS
-        for i in range(NUM_LEDS - EyeSize - 2):
-            strip.fill((0, 0, 0))  # Turn off all LEDs
+        pixel_pos = 0
+        direction = 1
+        speed_delay = 0.05
+        while pixel_pos < NUM_LEDS:
+            #Clear the strip
+            strip.fill((0, 0, 0))
 
-            #Set the leading dim pixel
-            strip.setPixelColor(i, Color(red // 10, green // 10, blue // 10))
+            # Set the current pixel
+            strip[pixel_pos] = color
 
-            # Set the "eye" of the effect
-            for j in range(1, EyeSize + 1):
-                strip.setPixelColor(i + j, (red, green, blue))
+            # Update the strip
+            strip.show()
+            time.sleep(speed_delay)
 
-            # Set the trailing dim pixel
-            strip.setPixelColor(i + EyeSize + 1, Color(red // 10, green // 10, blue // 10))
+            # Move the pixel
+            pixel_pos += direction
 
-            strip.show()  # Update the LED strip
-            time.sleep(delay)
+            # Reverse direction if hitting boundaries
+            if pixel_pos >= NUM_LEDS - 1 or pixel_pos <= 0:
+                direction *= -1  # Change direction
+                # Progressively move forward
+                if direction == -1:  # Only progress after one full ping-pong cycle
+                    pixel_pos += 1  # Move forward one step
