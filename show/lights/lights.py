@@ -44,7 +44,7 @@ patterns = [
     'patterns.fireworks',
     'patterns.colorsnow',
     'patterns.randommove',
-    'patterns.test',
+    # 'patterns.test',
 ]
 
 
