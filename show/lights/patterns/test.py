@@ -3,7 +3,6 @@ import time
 import math
 from .putil import *
 
-num_pixels = 300
 NUM_LEDS = 300
 
 class Test(Pattern):
@@ -14,6 +13,7 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
+        num_pixels = 10
         speed_delay = 0.05
         positions = [random.randint(0, NUM_LEDS - 1) for _ in range(num_pixels)]  # Random starting positions
         directions = [1 if random.random() > 0.5 else -1 for _ in range(num_pixels)]  # Random initial directions
