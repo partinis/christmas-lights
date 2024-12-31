@@ -4,7 +4,6 @@ import math
 from .putil import *
 
 NUM_PIXELS = 300
-NUM_LEDS = 300
 
 class Test(Pattern):
 
@@ -17,30 +16,22 @@ class Test(Pattern):
         color = get_random_color()
         color1 = get_random_color()
         color2 = get_random_color()
-        red = get_random_color()
-        green = get_random_color()
-        blue = get_random_color()
         iterations=100
         size = 5
         delay=0.1
         gravity=0.8
-        EyeSize = 4
+        center = random.randint(0, NUM_PIXELS - 1)
         center = random.randint(0, NUM_PIXELS - 1)
         snow = [0] * NUM_PIXELS
-        strip.fill(state.color1)
-        strip.show()
-        # for i in range(NUM_LEDS - EyeSize - 2):
-        #     strip.fill((0, 0, 0))  # Turn off all LEDs
-        #
-        #     # # Set the leading dim pixel
-        #     # strip.setPixelColor(i, Color(red // 10, green // 10, blue // 10))
-        #     #
-        #     # # Set the "eye" of the effect
-        #     # for j in range(1, EyeSize + 1):
-        #     #     strip.setPixelColor(i + j, Color(red, green, blue))
-        #     #
-        #     # # Set the trailing dim pixel
-        #     # strip.setPixelColor(i + EyeSize + 1, Color(red // 10, green // 10, blue // 10))
-        #     #
-        #     strip.show()  # Update the LED strip
-            # time.sleep(delay)
+        for _ in range(100):
+            snow[random.randint(0, NUM_PIXELS - 1)] = 1
+            for i in range(NUM_PIXELS - 1, 0, -1):
+                snow[i] = snow[i - 1]
+            snow[0] = 0
+            for i in range(NUM_PIXELS):
+                if snow[i]:
+                    strip.setPixelColor(i, (255, 255, 255))
+                else:
+                    strip.setPixelColor(i, (0, 0, 0))
+            strip.show()
+            time.sleep(delay)
