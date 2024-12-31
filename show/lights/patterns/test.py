@@ -26,20 +26,19 @@ class Test(Pattern):
         gravity=0.8
         EyeSize = 4
         center = random.randint(0, NUM_PIXELS - 1)
-        center = random.randint(0, NUM_PIXELS - 1)
         snow = [0] * NUM_PIXELS
         for i in range(NUM_LEDS - EyeSize - 2):
             # strip.setAll(0, 0, 0)  # Turn off all LEDs
 
             # Set the leading dim pixel
-            strip.setPixelColor(i, (red // 10, green // 10, blue // 10))
+            strip.setPixelColor(i, Color(red // 10, green // 10, blue // 10))
 
             # Set the "eye" of the effect
             for j in range(1, EyeSize + 1):
-                strip.setPixel(i + j, (red, green, blue))
+                strip.setPixel(i + j, Color(red, green, blue))
 
             # Set the trailing dim pixel
-            strip.setPixelColor(i + EyeSize + 1, (red // 10, green // 10, blue // 10))
+            strip.setPixelColor(i + EyeSize + 1, Color(red // 10, green // 10, blue // 10))
 
             strip.show()  # Update the LED strip
             time.sleep(delay)
