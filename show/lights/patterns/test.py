@@ -6,6 +6,17 @@ from .putil import *
 NUM_PIXELS = 300
 NUM_LEDS = 300
 
+pixels = [
+    {
+        "pos": random.randint(0, NUM_LEDS - 1),  # Random initial position
+        "range_start": random.randint(0, NUM_LEDS // 2),  # Random start of range
+        "range_end": random.randint(NUM_LEDS // 2, NUM_LEDS - 1),  # Random end of range
+        "direction": random.choice([-1, 1]),  # Random initial direction
+        "color": (random.randint(50, 255), random.randint(50, 255), random.randint(50, 255)),  # Random color
+    }
+    for _ in range(NUM_PIXELS)
+]
+
 class Test(Pattern):
 
     @classmethod
@@ -14,44 +25,29 @@ class Test(Pattern):
 
     @classmethod
     def update(self, strip, state):
-        color = get_random_color()
-        color1 = get_random_color()
-        color2 = get_random_color()
-        red = 200
-        green = 0
-        blue = 0
-        iterations=100
-        size = 5
-        delay=0.1
-        gravity=0.8
-        EyeSize = 4
-        center = random.randint(0, NUM_PIXELS - 1)
-        snow = [0] * NUM_PIXELS
-        pixel_pos = 0
-        direction = 1
         speed_delay = 0.05
-        while pixel_pos < NUM_LEDS:
-            # Generate a random range for back-and-forth movement
-            move_range = random.randint(3, 8)  # Range length for ping-pong
+        while True:
+            # Clear the strip
+            strip.fill((0, 0, 0))
 
-            # Perform ping-pong movement within the random range
-            for offset in range(move_range * 2):  # Forward and backward
-                # Clear the strip
-                strip.fill((0, 0, 0))
+            # Update each pixel's position
+            for pixel in pixels:
+                # Move pixel position
+                pixel["pos"] += pixel["direction"]
 
-                # Calculate the ping-pong position
-                local_pos = pixel_pos + offset if offset < move_range else pixel_pos + (2 * move_range - offset - 1)
+                # Check boundaries within the range
+                if pixel["pos"] >= pixel["range_end"] or pixel["pos"] <= pixel["range_start"]:
+                    pixel["direction"] *= -1  # Reverse direction
 
-                # Ensure it doesn't exceed strip boundaries
-                if local_pos >= NUM_LEDS:
-                    break
+                # Render the pixel
+                strip[pixel["pos"]] = pixel["color"]
 
-                # Set the current pixel
-                strip[local_pos] = color
+            # Progress all pixels to the left after each cycle
+            for pixel in pixels:
+                pixel["range_start"] = max(0, pixel["range_start"] - 1)
+                pixel["range_end"] = max(pixel["range_start"] + 1, pixel["range_end"] - 1)
+                pixel["pos"] = max(pixel["range_start"], min(pixel["pos"], pixel["range_end"]))
 
-                # Update the strip
-                strip.show()
-                time.sleep(speed_delay)
-
-            # Move forward on the strip after the random ping-pong cycle
-            pixel_pos += 1
+            # Update the strip
+            strip.show()
+            time.sleep(speed_delay)
