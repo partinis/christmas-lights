@@ -29,7 +29,7 @@ class Test(Pattern):
         center = random.randint(0, NUM_PIXELS - 1)
         snow = [0] * NUM_PIXELS
         for i in range(NUM_LEDS - EyeSize - 2):
-            strip.setAll(0, 0, 0)  # Turn off all LEDs
+            # strip.setAll(0, 0, 0)  # Turn off all LEDs
 
             # Set the leading dim pixel
             strip.setPixelColor(i, red // 10, green // 10, blue // 10)
