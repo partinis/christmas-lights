@@ -31,22 +31,27 @@ class Test(Pattern):
         direction = 1
         speed_delay = 0.05
         while pixel_pos < NUM_LEDS:
-            #Clear the strip
-            strip.fill((0, 0, 0))
+            # Generate a random range for back-and-forth movement
+            move_range = random.randint(3, 8)  # Range length for ping-pong
 
-            # Set the current pixel
-            strip[pixel_pos] = color
+            # Perform ping-pong movement within the random range
+            for offset in range(move_range * 2):  # Forward and backward
+                # Clear the strip
+                strip.fill((0, 0, 0))
 
-            # Update the strip
-            strip.show()
-            time.sleep(speed_delay)
+                # Calculate the ping-pong position
+                local_pos = pixel_pos + offset if offset < move_range else pixel_pos + (2 * move_range - offset - 1)
 
-            # Move the pixel
-            pixel_pos += direction
+                # Ensure it doesn't exceed strip boundaries
+                if local_pos >= NUM_LEDS:
+                    break
 
-            # Reverse direction if hitting boundaries
-            if pixel_pos >= NUM_LEDS - 1 or pixel_pos <= 0:
-                direction *= -1  # Change direction
-                # Progressively move forward
-                if direction == -1:  # Only progress after one full ping-pong cycle
-                    pixel_pos += 1  # Move forward one step
+                # Set the current pixel
+                strip[local_pos] = color
+
+                # Update the strip
+                strip.show()
+                time.sleep(speed_delay)
+
+            # Move forward on the strip after the random ping-pong cycle
+            pixel_pos += 1
