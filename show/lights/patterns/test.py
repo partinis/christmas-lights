@@ -17,9 +17,9 @@ class Test(Pattern):
         color = get_random_color()
         color1 = get_random_color()
         color2 = get_random_color()
-        red = get_random_color()
-        green = get_random_color()
-        blue = get_random_color()
+        red = 200
+        green = 0
+        blue = 0
         iterations=100
         size = 5
         delay=0.1
@@ -31,7 +31,7 @@ class Test(Pattern):
             strip.fill((0, 0, 0))  # Turn off all LEDs
 
             #Set the leading dim pixel
-            strip.setPixelColor(i, (red // 10, green // 10, blue // 10))
+            strip.setPixelColor(i, Color(red // 10, green // 10, blue // 10))
 
             # Set the "eye" of the effect
             # for j in range(1, EyeSize + 1):
