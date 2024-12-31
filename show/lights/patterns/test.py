@@ -41,4 +41,4 @@ class Test(Pattern):
             strip.setPixelColor(i + EyeSize + 1, Color(red // 10, green // 10, blue // 10))
 
             strip.show()  # Update the LED strip
-            # time.sleep(delay)
+            time.sleep(delay)
