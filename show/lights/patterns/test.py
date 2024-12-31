@@ -32,14 +32,14 @@ class Test(Pattern):
             # strip.setAll(0, 0, 0)  # Turn off all LEDs
 
             # Set the leading dim pixel
-            strip.setPixelColor(i, red // 10, green // 10, blue // 10)
+            strip.setPixelColor(i, (red // 10, green // 10, blue // 10))
 
             # Set the "eye" of the effect
             for j in range(1, EyeSize + 1):
-                strip.setPixel(i + j, red, green, blue)
+                strip.setPixel(i + j, (red, green, blue))
 
             # Set the trailing dim pixel
-            strip.setPixelColor(i + EyeSize + 1, red // 10, green // 10, blue // 10)
+            strip.setPixelColor(i + EyeSize + 1, (red // 10, green // 10, blue // 10))
 
             strip.show()  # Update the LED strip
             time.sleep(delay)
