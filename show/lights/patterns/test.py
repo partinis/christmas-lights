@@ -30,15 +30,15 @@ class Test(Pattern):
         for i in range(NUM_LEDS - EyeSize - 2):
             strip.fill((0, 0, 0))  # Turn off all LEDs
 
-            # # Set the leading dim pixel
-            # strip.setPixelColor(i, Color(red // 10, green // 10, blue // 10))
-            #
-            # # Set the "eye" of the effect
-            # for j in range(1, EyeSize + 1):
-            #     strip.setPixelColor(i + j, Color(red, green, blue))
-            #
-            # # Set the trailing dim pixel
-            # strip.setPixelColor(i + EyeSize + 1, Color(red // 10, green // 10, blue // 10))
-            #
+            # Set the leading dim pixel
+            strip.setPixelColor(i, Color(red // 10, green // 10, blue // 10))
+
+            # Set the "eye" of the effect
+            for j in range(1, EyeSize + 1):
+                strip.setPixelColor(i + j, Color(red, green, blue))
+
+            # Set the trailing dim pixel
+            strip.setPixelColor(i + EyeSize + 1, Color(red // 10, green // 10, blue // 10))
+
             strip.show()  # Update the LED strip
             # time.sleep(delay)
