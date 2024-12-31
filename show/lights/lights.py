@@ -43,6 +43,7 @@ patterns = [
     'patterns.confetti',
     'patterns.fireworks',
     'patterns.colorsnow',
+    'patterns.randommove',
     'patterns.test',
 ]
 
